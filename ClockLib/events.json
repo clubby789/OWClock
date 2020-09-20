@@ -1,0 +1,20 @@
+{
+	"eventList": [
+		{
+			"Timestamp": 0.0,
+			"Name": "Loop start"
+		},
+		{
+			"Timestamp": 15.0,
+			"Name": "Event happens"
+		},
+		{
+			"Timestamp": 30.0,
+			"Name": "Another one happens"
+		},
+		{
+			"Timestamp": 1320.0,
+			"Name": "Supernova"
+		}
+	]
+}
