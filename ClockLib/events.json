@@ -5,11 +5,11 @@
 			"Name": "Loop start"
 		},
 		{
-			"Timestamp": 15.0,
+			"Timestamp": 30.0,
 			"Name": "Event happens"
 		},
 		{
-			"Timestamp": 30.0,
+			"Timestamp": 15.0,
 			"Name": "Another one happens"
 		},
 		{

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Clock
 {
@@ -12,6 +13,7 @@ namespace Clock
         public void AddEvent(float timestamp, string name)
         {
             eventList.Add(new TimeEvent(timestamp, name));
+            eventList.Sort(SortTimestamp);
             Save();
         }
 
@@ -23,7 +25,13 @@ namespace Clock
         public static EventFile LoadSaveFile()
         {
             var save = OWClock.Helper.Storage.Load<EventFile>(_fileName);
+            save.eventList.Sort(SortTimestamp);
             return save ?? new EventFile();
+        }
+
+        private static int SortTimestamp(TimeEvent e1, TimeEvent e2)
+        {
+            return e1.Timestamp.CompareTo(e2.Timestamp);
         }
     }
 }
