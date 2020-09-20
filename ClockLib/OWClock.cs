@@ -53,7 +53,6 @@ namespace Clock
 
         private void RecalculatePosition(GraphicSettings settings)
         {
-            Helper.Console.WriteLine("recalc pos");
             _yPos = settings.displayResHeight - 60f;
             _xPos = Milliseconds ? settings.displayResWidth * 4 / 5 - 80f : settings.displayResWidth * 4 / 5 - 20f;
         }
