@@ -301,7 +301,8 @@
       copy /y "$(ProjectDir)\manifest.json" "$(ProjectDir)\Release"
       copy /y "$(ProjectDir)\events.json" "$(ProjectDir)\Release"
       copy /y "$(ProjectDir)\bin\Release\Clock.dll" "$(ProjectDir)\Release"
-      tar.exe -a -c -f Release.zip "$(ProjectDir)\Release"
+      cd "$(ProjectDir)"
+      tar.exe -a -c -f Release.zip "Release"
       rmdir /s /q "$(ProjectDir)\Release"
     </PostBuildEvent>
   </PropertyGroup>
