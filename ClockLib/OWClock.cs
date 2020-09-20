@@ -69,23 +69,8 @@ namespace Clock
             style.normal.textColor = Color.white;
             style.font = hudFont;
             style.fontSize = 30;
-            if (CountUp)
-            {
-                GUI.Label(new Rect(xPos, yPos, 200f, 60f), string.Concat(new object[]
-                {
-                    "Time Elapsed: ",
-                    ParseTime(elapsed)
-                }), style) ;
-            }
-            else
-            {
-                float remaining = TimeLoop.GetSecondsRemaining();
-                GUI.Label(new Rect(xPos, yPos, 200f, 60f), string.Concat(new object[]
-                {
-                    "Time Remaining: ",
-                    ParseTime(remaining)
-                }), style) ;
-            }
+            string timestamp = CountUp ? "Time Elapsed: " + ParseTime(elapsed) : "Time Remaining: " + ParseTime(TimeLoop.GetSecondsRemaining());
+            GUI.Label(new Rect(xPos, yPos, 200f, 60f), timestamp, style) ;
             int count = 0;
             style.fontSize = 20;
             foreach (TimeEvent timeEvent in Save.eventList)
