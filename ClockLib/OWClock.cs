@@ -1,19 +1,9 @@
 ﻿using OWML.Common;
+using OWML.Common.Menus;
 using OWML.ModHelper;
-using OWML.ModHelper.Events;
-using OWML.ModHelper.Input;
-using System.Reflection;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
-using System.Collections;
 using System;
 using System.Collections.Generic;
-using NAudio.CoreAudioApi;
-using System.IO;
-using OWML.Common.Menus;
-using OWML.ModHelper.Menus;
+using UnityEngine;
 
 namespace Clock
 {
@@ -33,7 +23,7 @@ namespace Clock
             Save = EventFile.LoadSaveFile();
             hudFont = Resources.Load<Font>(@"fonts/english - latin/SpaceMono-Regular_Dynamic");
             ModHelper.Menus.PauseMenu.OnInit += AddMenuItem;
-            
+
             ModHelper.Console.WriteLine($"My mod {nameof(Clock)} is loaded!", MessageType.Success);
             // ModHelper.Menus.PauseMenu.OnInit += AddClock;
         }
@@ -53,7 +43,7 @@ namespace Clock
             float currentTime = TimeLoop.GetSecondsElapsed();
             base.ModHelper.Console.WriteLine(string.Format(": Time is {0}", currentTime));
         }
-        
+
 
         private void OnGUI()
         {
@@ -64,7 +54,7 @@ namespace Clock
             }
             Resolution currentRes = Screen.currentResolution;
             float yPos = currentRes.height - 60f;
-            float xPos = Milliseconds ? currentRes.width * 4 / 5 - 80f : currentRes.width * 4/5 - 20f;
+            float xPos = Milliseconds ? currentRes.width * 4 / 5 - 80f : currentRes.width * 4 / 5 - 20f;
             float elapsed = TimeLoop.GetSecondsElapsed();
             if (elapsed < 1f)
             {
@@ -75,12 +65,13 @@ namespace Clock
             style.font = hudFont;
             style.fontSize = 30;
             string timestamp = CountUp ? "Time Elapsed: " + ParseTime(elapsed) : "Time Remaining: " + ParseTime(TimeLoop.GetSecondsRemaining());
-            GUI.Label(new Rect(xPos, yPos, 200f, 60f), timestamp, style) ;
+            GUI.Label(new Rect(xPos, yPos, 200f, 60f), timestamp, style);
             int count = 0;
             style.fontSize = 20;
             foreach (TimeEvent timeEvent in Save.eventList)
             {
-                if (count > 5) {
+                if (count > 5)
+                {
                     break;
                 }
                 if (timeEvent.Timestamp < elapsed)
@@ -95,7 +86,8 @@ namespace Clock
                 if (CountUp)
                 {
                     timestring = ParseTime(timeEvent.Timestamp);
-                } else
+                }
+                else
                 {
                     timestring = ParseTime(timeEvent.Timestamp - elapsed);
                 }
@@ -133,7 +125,7 @@ namespace Clock
             });
             if (Milliseconds)
             {
-                string milliseconds = Math.Round((timestamp - Math.Floor(timestamp))*1000).ToString().PadLeft(3, '0');
+                string milliseconds = Math.Round((timestamp - Math.Floor(timestamp)) * 1000).ToString().PadLeft(3, '0');
                 clock = clock + ":" + milliseconds;
             }
             return clock;
@@ -145,7 +137,5 @@ namespace Clock
             Milliseconds = config.GetSettingsValue<bool>("Count In Milliseconds");
             Helper = ModHelper;
         }
-
     }
-
 }

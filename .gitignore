@@ -2,3 +2,4 @@ packages
 .vs
 ClockLib/bin
 ClockLib/obj
+ClockLib/ClockLib.csproj.user
