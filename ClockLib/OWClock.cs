@@ -22,6 +22,7 @@ namespace Clock
         public static IModHelper Helper { get; private set; }
         private static EventFile save;
         public static bool CountUp { get; private set; }
+        public static bool Milliseconds { get; private set; }
         public static EventFile Save { get => save; set => save = value; }
 
         private List<string> eventListStr = new List<string>();
@@ -42,10 +43,14 @@ namespace Clock
             var eventMenu = ModHelper.Menus.PauseMenu.Copy("ADD EVENT");
             var openInputButton = ModHelper.Menus.PauseMenu.ResumeButton.Duplicate("ADD EVENT");
             openInputButton.OnClick += () => EventPopup();
+
+            var eventMenu2 = ModHelper.Menus.PauseMenu.Copy("DEBUG TIME");
+            var openInputButton2 = ModHelper.Menus.PauseMenu.ResumeButton.Duplicate("DEBUG TIME");
+            openInputButton2.OnClick += () => LogTime();
         }
         private void LogTime()
         {
-            int currentTime = Convert.ToInt32(TimeLoop.GetSecondsElapsed());
+            float currentTime = TimeLoop.GetSecondsElapsed();
             base.ModHelper.Console.WriteLine(string.Format(": Time is {0}", currentTime));
         }
         
@@ -59,7 +64,7 @@ namespace Clock
             }
             Resolution currentRes = Screen.currentResolution;
             float yPos = currentRes.height - 60f;
-            float xPos = currentRes.width * 4/5 - 20f;
+            float xPos = Milliseconds ? currentRes.width * 4 / 5 - 80f : currentRes.width * 4/5 - 20f;
             float elapsed = TimeLoop.GetSecondsElapsed();
             if (elapsed < 1f)
             {
@@ -120,17 +125,24 @@ namespace Clock
         {
             string minutes = Mathf.Floor(timestamp / 60f).ToString().PadLeft(2, '0');
             string seconds = Mathf.Round(timestamp % 60f * 100f / 100f).ToString().PadLeft(2, '0');
-            return string.Concat(new object[]
+            string clock = string.Concat(new object[]
             {
                 minutes,
                 ":",
                 seconds
             });
+            if (Milliseconds)
+            {
+                string milliseconds = Math.Round((timestamp - Math.Floor(timestamp))*1000).ToString().PadLeft(3, '0');
+                clock = clock + ":" + milliseconds;
+            }
+            return clock;
         }
 
         public override void Configure(IModConfig config)
         {
             CountUp = config.GetSettingsValue<bool>("Count Up");
+            Milliseconds = config.GetSettingsValue<bool>("Count In Milliseconds");
             Helper = ModHelper;
         }
 

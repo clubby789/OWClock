@@ -1,6 +1,7 @@
 {
 	"enabled": true,
 	"settings": {
-		"Count Up":  true
+		"Count Up": true,
+		"Count In Milliseconds":  false
 	}
 }
