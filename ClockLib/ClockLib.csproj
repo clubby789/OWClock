@@ -295,6 +295,14 @@
       copy /y "$(ProjectDir)\default-config.json" "$(OwmlDir)\Mods\$(ModUniqueName)"
       copy /y "$(ProjectDir)\manifest.json" "$(OwmlDir)\Mods\$(ModUniqueName)"
       copy /y "$(ProjectDir)\events.json" "$(OwmlDir)\Mods\$(ModUniqueName)"
+
+      md "$(ProjectDir)\Release"
+      copy /y "$(ProjectDir)\default-config.json" "$(ProjectDir)\Release"
+      copy /y "$(ProjectDir)\manifest.json" "$(ProjectDir)\Release"
+      copy /y "$(ProjectDir)\events.json" "$(ProjectDir)\Release"
+      copy /y "$(ProjectDir)\bin\Release\Clock.dll" "$(ProjectDir)\Release"
+      tar.exe -a -c -f Release.zip "$(ProjectDir)\Release"
+      rmdir /s /q "$(ProjectDir)\Release"
     </PostBuildEvent>
   </PropertyGroup>
 </Project>
