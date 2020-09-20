@@ -1,119 +1,102 @@
 ﻿using OWML.Common;
+using OWML.Common.Menus;
 using OWML.ModHelper;
-using OWML.ModHelper.Events;
-using OWML.ModHelper.Input;
-using System.Reflection;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
-using System.Collections;
 using System;
 using System.Collections.Generic;
-using NAudio.CoreAudioApi;
-using System.IO;
-using OWML.Common.Menus;
-using OWML.ModHelper.Menus;
+using UnityEngine;
 
 namespace Clock
 {
     public class OWClock : ModBehaviour
     {
-        public static IModHelper Helper { get; private set; }
-        private static EventFile save;
+        private static EventFile _save;
+        private List<string> _eventListStr = new List<string>();
+        private List<KeyValuePair<float, string>> _eventList = new List<KeyValuePair<float, string>>();
+        private Font _hudFont;
+        private Resolution _resolution;
+        private float _xPos;
+        private float _yPos;
+
+        public static IModHelper Helper;
         public static bool CountUp { get; private set; }
         public static bool Milliseconds { get; private set; }
-        public static EventFile Save { get => save; set => save = value; }
+        public static EventFile Save { get => _save; set => _save = value; }
 
-        private List<string> eventListStr = new List<string>();
-        private List<KeyValuePair<float, string>> eventList = new List<KeyValuePair<float, string>>();
-        private Font hudFont;
         private void Start()
         {
+            Helper = ModHelper;
             Save = EventFile.LoadSaveFile();
-            hudFont = Resources.Load<Font>(@"fonts/english - latin/SpaceMono-Regular_Dynamic");
+            _hudFont = Resources.Load<Font>(@"fonts/english - latin/SpaceMono-Regular_Dynamic");
             ModHelper.Menus.PauseMenu.OnInit += AddMenuItem;
-            
+
             ModHelper.Console.WriteLine($"My mod {nameof(Clock)} is loaded!", MessageType.Success);
-            // ModHelper.Menus.PauseMenu.OnInit += AddClock;
+
+            GlobalMessenger<GraphicSettings>.AddListener("GraphicSettingsUpdated", RecalculatePosition);
         }
 
         private void AddMenuItem()
         {
             var eventMenu = ModHelper.Menus.PauseMenu.Copy("ADD EVENT");
             var openInputButton = ModHelper.Menus.PauseMenu.ResumeButton.Duplicate("ADD EVENT");
-            openInputButton.OnClick += () => EventPopup();
+            openInputButton.OnClick += EventPopup;
 
             var eventMenu2 = ModHelper.Menus.PauseMenu.Copy("DEBUG TIME");
             var openInputButton2 = ModHelper.Menus.PauseMenu.ResumeButton.Duplicate("DEBUG TIME");
-            openInputButton2.OnClick += () => LogTime();
+            openInputButton2.OnClick += LogTime;
         }
+
         private void LogTime()
         {
-            float currentTime = TimeLoop.GetSecondsElapsed();
-            base.ModHelper.Console.WriteLine(string.Format(": Time is {0}", currentTime));
+            var currentTime = TimeLoop.GetSecondsElapsed();
+            ModHelper.Console.WriteLine($"Time is {currentTime}");
         }
-        
+
+        private void RecalculatePosition(GraphicSettings settings)
+        {
+            _yPos = settings.displayResHeight - 60f;
+            _xPos = Milliseconds ? settings.displayResWidth * 4 / 5 - 80f : settings.displayResWidth * 4 / 5 - 20f;
+        }
 
         private void OnGUI()
         {
-            // base.ModHelper.Console.WriteLine("OnGui called");
             if (GUIMode.IsHiddenMode() || PlayerState.UsingShipComputer())
             {
                 return;
             }
-            Resolution currentRes = Screen.currentResolution;
-            float yPos = currentRes.height - 60f;
-            float xPos = Milliseconds ? currentRes.width * 4 / 5 - 80f : currentRes.width * 4/5 - 20f;
-            float elapsed = TimeLoop.GetSecondsElapsed();
+
+            var elapsed = TimeLoop.GetSecondsElapsed();
             if (elapsed < 1f)
             {
                 return;
             }
-            GUIStyle style = new GUIStyle();
-            style.normal.textColor = Color.white;
-            style.font = hudFont;
+
+            var style = new GUIStyle();
+            style.font = _hudFont;
             style.fontSize = 30;
-            string timestamp = CountUp ? "Time Elapsed: " + ParseTime(elapsed) : "Time Remaining: " + ParseTime(TimeLoop.GetSecondsRemaining());
-            GUI.Label(new Rect(xPos, yPos, 200f, 60f), timestamp, style) ;
-            int count = 0;
+            style.normal.textColor = Color.white;
+
+            var timestamp = CountUp ? "Time Elapsed: " + ParseTime(elapsed) : "Time Remaining: " + ParseTime(TimeLoop.GetSecondsRemaining());
+            GUI.Label(new Rect(_xPos, _yPos, 200f, 60f), timestamp, style);
+
             style.fontSize = 20;
-            foreach (TimeEvent timeEvent in Save.eventList)
+            for (int i = 0; i < Mathf.Clamp(Save.eventList.Count, 0, 5); i++)
             {
-                if (count > 5) {
-                    break;
-                }
+                var timeEvent = Save.eventList[i];
                 if (timeEvent.Timestamp < elapsed)
                 {
                     continue;
                 }
-                float scaleFactor = (timeEvent.Timestamp - elapsed) / 20;
+                var scaleFactor = (timeEvent.Timestamp - elapsed) / 20;
                 style.normal.textColor = Color.Lerp(Color.red, Color.white, scaleFactor);
-                count++;
-                yPos -= 20;
-                string timestring;
-                if (CountUp)
-                {
-                    timestring = ParseTime(timeEvent.Timestamp);
-                } else
-                {
-                    timestring = ParseTime(timeEvent.Timestamp - elapsed);
-                }
-                GUI.Label(new Rect(xPos, yPos, 200f, 20f), string.Concat(new object[]
-                {
-                    timestring,
-                    " - ",
-                    timeEvent.Name
-                }), style);
+                var timeString = CountUp ? ParseTime(timeEvent.Timestamp) : ParseTime(timeEvent.Timestamp - elapsed);
+                GUI.Label(new Rect(_xPos, _yPos - (i * 20), 200f, 20f), $"{timeString} - {timeEvent.Name}", style);
             }
-
         }
 
         private void EventPopup()
         {
             var popup = ModHelper.Menus.PopupManager.CreateInputPopup(InputType.Text, "Event Name");
             popup.OnConfirm += AddEvent;
-
         }
 
         private void AddEvent(string text)
@@ -123,18 +106,13 @@ namespace Clock
 
         string ParseTime(float timestamp)
         {
-            string minutes = Mathf.Floor(timestamp / 60f).ToString().PadLeft(2, '0');
-            string seconds = Mathf.Round(timestamp % 60f * 100f / 100f).ToString().PadLeft(2, '0');
-            string clock = string.Concat(new object[]
-            {
-                minutes,
-                ":",
-                seconds
-            });
+            var minutes = Mathf.Floor(timestamp / 60f).ToString().PadLeft(2, '0');
+            var seconds = Mathf.Round(timestamp % 60f * 100f / 100f).ToString().PadLeft(2, '0');
+            var clock = $"{minutes}:{seconds}";
             if (Milliseconds)
             {
-                string milliseconds = Math.Round((timestamp - Math.Floor(timestamp))*1000).ToString().PadLeft(3, '0');
-                clock = clock + ":" + milliseconds;
+                var milliseconds = Math.Round((timestamp - Math.Floor(timestamp)) * 1000).ToString().PadLeft(3, '0');
+                clock = $"{clock}.{milliseconds}";
             }
             return clock;
         }
@@ -143,9 +121,6 @@ namespace Clock
         {
             CountUp = config.GetSettingsValue<bool>("Count Up");
             Milliseconds = config.GetSettingsValue<bool>("Count In Milliseconds");
-            Helper = ModHelper;
         }
-
     }
-
 }
