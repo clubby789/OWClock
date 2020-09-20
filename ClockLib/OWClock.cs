@@ -107,11 +107,11 @@ namespace Clock
         string ParseTime(float timestamp)
         {
             var minutes = Mathf.Floor(timestamp / 60f).ToString().PadLeft(2, '0');
-            var seconds = Mathf.Round(timestamp % 60f * 100f / 100f).ToString().PadLeft(2, '0');
+            var seconds = Math.Truncate(timestamp % 60f).ToString().PadLeft(2, '0');
             var clock = $"{minutes}:{seconds}";
             if (Milliseconds)
             {
-                var milliseconds = Math.Round((timestamp - Math.Floor(timestamp)) * 1000).ToString().PadLeft(3, '0');
+                var milliseconds = Math.Truncate((timestamp - Math.Floor(timestamp)) * 1000).ToString().PadLeft(3, '0');
                 clock = $"{clock}.{milliseconds}";
             }
             return clock;
