@@ -2,7 +2,7 @@
   "filename": "Clock.dll",
   "author": "clubby789",
   "name": "Clock",
-  "uniqueName": "OWClock",
+  "uniqueName": "clubby789.OWClock",
   "description": "Add a clock overlay",
   "version": "0.1.0",
   "owmlVersion": "0.7.3"

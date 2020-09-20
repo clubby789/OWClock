@@ -59,7 +59,7 @@ namespace Clock
             }
             Resolution currentRes = Screen.currentResolution;
             float yPos = currentRes.height - 60f;
-            float xPos = currentRes.width * 4/5;
+            float xPos = currentRes.width * 4/5 - 20f;
             float elapsed = TimeLoop.GetSecondsElapsed();
             if (elapsed < 1f)
             {
@@ -101,9 +101,17 @@ namespace Clock
                 style.normal.textColor = Color.Lerp(Color.red, Color.white, scaleFactor);
                 count++;
                 yPos -= 20;
+                string timestring;
+                if (CountUp)
+                {
+                    timestring = ParseTime(timeEvent.Timestamp);
+                } else
+                {
+                    timestring = ParseTime(timeEvent.Timestamp - elapsed);
+                }
                 GUI.Label(new Rect(xPos, yPos, 200f, 20f), string.Concat(new object[]
                 {
-                    ParseTime(timeEvent.Timestamp),
+                    timestring,
                     " - ",
                     timeEvent.Name
                 }), style);
