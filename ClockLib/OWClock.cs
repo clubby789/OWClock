@@ -79,7 +79,8 @@ namespace Clock
             GUI.Label(new Rect(_xPos, _yPos, 200f, 60f), timestamp, style);
 
             style.fontSize = 20;
-            for (int i = 0; i < Mathf.Clamp(Save.eventList.Count, 0, 5); i++)
+            int shown = 0;
+            for (int i = 0; (i < Mathf.Clamp(Save.eventList.Count, 0, 5)) && (shown < 5); i++)
             {
                 var timeEvent = Save.eventList[i];
                 if (timeEvent.Timestamp < elapsed)
@@ -89,7 +90,8 @@ namespace Clock
                 var scaleFactor = (timeEvent.Timestamp - elapsed) / 20;
                 style.normal.textColor = Color.Lerp(Color.red, Color.white, scaleFactor);
                 var timeString = CountUp ? ParseTime(timeEvent.Timestamp) : ParseTime(timeEvent.Timestamp - elapsed);
-                GUI.Label(new Rect(_xPos, _yPos - (i * 20), 200f, 20f), $"{timeString} - {timeEvent.Name}", style);
+                GUI.Label(new Rect(_xPos, _yPos - (shown * 20), 200f, 20f), $"{timeString} - {timeEvent.Name}", style);
+                shown++;
             }
         }
 
