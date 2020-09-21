@@ -13,13 +13,13 @@ namespace Clock
         private List<string> _eventListStr = new List<string>();
         private List<KeyValuePair<float, string>> _eventList = new List<KeyValuePair<float, string>>();
         private Font _hudFont;
-        private Resolution _resolution;
         private float _xPos;
         private float _yPos;
 
         public static IModHelper Helper;
         public static bool CountUp { get; private set; }
         public static bool Milliseconds { get; private set; }
+        public static int EventCount { get; private set; }
         public static EventFile Save { get => _save; set => _save = value; }
 
         private void Start()
@@ -80,7 +80,9 @@ namespace Clock
 
             style.fontSize = 20;
             int shown = 0;
-            for (int i = 0; (i < Mathf.Clamp(Save.eventList.Count, 0, 5)) && (shown < 5); i++)
+            // Loop until desired number of events are shown
+            // OR we reach end of list
+            for (int i = 0; (i < Save.eventList.Count) && (shown < EventCount); i++)
             {
                 var timeEvent = Save.eventList[i];
                 if (timeEvent.Timestamp < elapsed)
@@ -90,7 +92,7 @@ namespace Clock
                 var scaleFactor = (timeEvent.Timestamp - elapsed) / 20;
                 style.normal.textColor = Color.Lerp(Color.red, Color.white, scaleFactor);
                 var timeString = CountUp ? ParseTime(timeEvent.Timestamp) : ParseTime(timeEvent.Timestamp - elapsed);
-                GUI.Label(new Rect(_xPos, _yPos - (shown * 20), 200f, 20f), $"{timeString} - {timeEvent.Name}", style);
+                GUI.Label(new Rect(_xPos, _yPos - (shown * 20) - 20f, 200f, 20f), $"{timeString} - {timeEvent.Name}", style);
                 shown++;
             }
         }
@@ -123,6 +125,7 @@ namespace Clock
         {
             CountUp = config.GetSettingsValue<bool>("Count Up");
             Milliseconds = config.GetSettingsValue<bool>("Count In Milliseconds");
+            EventCount = config.GetSettingsValue<int>("Events to Display");
         }
     }
 }

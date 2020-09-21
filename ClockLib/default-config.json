@@ -2,6 +2,7 @@
 	"enabled": true,
 	"settings": {
 		"Count Up": true,
-		"Count In Milliseconds":  false
+		"Count In Milliseconds": false,
+		"Events to Display": 5
 	}
 }

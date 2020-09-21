@@ -2,19 +2,35 @@
 	"eventList": [
 		{
 			"Timestamp": 0.0,
-			"Name": "Loop start"
+			"Name": "Loop Begins"
 		},
 		{
-			"Timestamp": 30.0,
-			"Name": "Event happens"
+			"Timestamp": 60.0,
+			"Name": "Ash Twin Sand Begins to Flow"
 		},
 		{
-			"Timestamp": 15.0,
-			"Name": "Another one happens"
+			"Timestamp": 660.0,
+			"Name": "Chert Becomes Nervous"
+		},
+		{
+			"Timestamp": 1020.0,
+			"Name": "Chert Panics"
+		},
+		{
+			"Timestamp": 1230.0,
+			"Name": "Chert Becomes Catatonic"
+		},
+		{
+			"Timestamp": 1235.0,
+			"Name": "Beginning of the End"
 		},
 		{
 			"Timestamp": 1320.0,
 			"Name": "Supernova"
+		},
+		{
+			"Timestamp": 1360.0,
+			"Name": "Loop Ends"
 		}
 	]
 }
