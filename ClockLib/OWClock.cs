@@ -21,6 +21,7 @@ namespace Clock
         public static bool CountUp { get; private set; }
         public static bool Milliseconds { get; private set; }
         public static int EventCount { get; private set; }
+        public static float HudScale { get; private set; }
         public static EventFile Save { get => _save; set => _save = value; }
 
         private void Start()
@@ -55,8 +56,8 @@ namespace Clock
         private void RecalculatePosition(GraphicSettings settings)
         {
             _yPos = settings.displayResHeight - 60f;
-            _xPos = Milliseconds ? settings.displayResWidth * 4 / 5 - 80f : settings.displayResWidth * 4 / 5 - 20f;
-            _width = settings.displayResWidth * 1 / 5;
+            _xPos = Milliseconds ? settings.displayResWidth * (1-HudScale/100) - 80f : settings.displayResWidth * (1 - HudScale / 100) - 20f;
+            _width = settings.displayResWidth * (HudScale/100);
         }
 
         private void OnGUI()
@@ -135,6 +136,7 @@ namespace Clock
             CountUp = config.GetSettingsValue<bool>("Count Up");
             Milliseconds = config.GetSettingsValue<bool>("Count In Milliseconds");
             EventCount = config.GetSettingsValue<int>("Events to Display");
+            HudScale = config.GetSettingsValue<float>("HudScale");
         }
     }
 }

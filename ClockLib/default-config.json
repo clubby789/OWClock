@@ -3,6 +3,13 @@
 	"settings": {
 		"Count Up": true,
 		"Count In Milliseconds": false,
-		"Events to Display": 5
+		"Events to Display": 5,
+		"HudScale": {
+			"title":  "Event List Width",
+			"type": "slider",
+			"value": 20,
+			"min": 10,
+			"max": 80
+		}
 	}
 }
