@@ -9,12 +9,72 @@
 			"Name": "Ash Twin Sand Begins to Flow"
 		},
 		{
+			"Timestamp": 120.0,
+			"Name": "Hourglass Sand Begins to Flow"
+		},
+		{
+			"Timestamp": 430.0,
+			"Name": "Sun Station Warp"
+		},
+		{
+			"Timestamp": 470.0,
+			"Name": "Ash Twin Warp"
+		},
+		{
+			"Timestamp": 480.0,
+			"Name": "Sun Station Warp"
+		},
+		{
+			"Timestamp": 530.0,
+			"Name": "Sun Station Warp"
+		},
+		{
+			"Timestamp": 580.0,
+			"Name": "Sun Station Warp"
+		},
+		{
+			"Timestamp": 620.0,
+			"Name": "Ash Twin Warp"
+		},
+		{
+			"Timestamp": 630.0,
+			"Name": "Sun Station Warp"
+		},
+		{
 			"Timestamp": 660.0,
 			"Name": "Chert Becomes Nervous"
 		},
 		{
+			"Timestamp": 680.0,
+			"Name": "Sun Station Warp"
+		},
+		{
+			"Timestamp": 690.0,
+			"Name": "Sun Station Falls (47s ago)"
+		},
+		{
+			"Timestamp": 765.0,
+			"Name": "Ash Twin Warp"
+		},
+		{
+			"Timestamp": 910.0,
+			"Name": "Ash Twin Warp"
+		},
+		{
 			"Timestamp": 1020.0,
 			"Name": "Chert Panics"
+		},
+		{
+			"Timestamp": 1050.0,
+			"Name": "Ash Twin Warp"
+		},
+		{
+			"Timestamp": 1200.0,
+			"Name": "Ash Twin Warp"
+		},
+		{
+			"Timestamp": 1220.0,
+			"Name": "Sand Stops Flowing"
 		},
 		{
 			"Timestamp": 1230.0,
@@ -23,6 +83,10 @@
 		{
 			"Timestamp": 1235.0,
 			"Name": "Beginning of the End"
+		},
+		{
+			"Timestamp": 1290.0,
+			"Name": "Warp Platforms Inactive"
 		},
 		{
 			"Timestamp": 1320.0,
