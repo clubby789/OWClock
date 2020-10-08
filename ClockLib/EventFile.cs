@@ -12,7 +12,7 @@ namespace Clock
 
         public void AddEvent(float timestamp, string name)
         {
-            eventList.Add(new TimeEvent(timestamp, name));
+            eventList.Add(new TimeEvent((float)Math.Truncate(timestamp), name));
             eventList.Sort(SortTimestamp);
             Save();
         }
