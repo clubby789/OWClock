@@ -14,27 +14,37 @@
 		"Sun": {
 			"title": "Show Sun Events",
 			"type": "toggle",
-			"value": true
-		},
-		"WarpPlatforms": {
-			"title": "Show Warp Platform Events",
-			"type": "toggle",
-			"value": true
-		},
-		"Chert": {
-			"title": "Show Chert's Mood",
-			"type": "toggle",
-			"value": true
+			"value": true,
+			"yes": "Yes",
+			"no": "No"
 		},
 		"TimeLoop": {
 			"title": "Show Timeloop Events",
 			"type": "toggle",
-			"value": true
+			"value": true,
+			"yes": "Yes",
+			"no": "No"
+		},
+		"WarpPlatforms": {
+			"title": "Show Warp Platform Events",
+			"type": "toggle",
+			"value": true,
+			"yes": "Yes",
+			"no": "No"
+		},
+		"Chert": {
+			"title": "Show Chert's Mood",
+			"type": "toggle",
+			"value": true,
+			"yes": "Yes",
+			"no": "No"
 		},
 		"Misc": {
 			"title": "Show Other Events",
 			"type": "toggle",
-			"value": true
+			"value": true,
+			"yes": "Yes",
+			"no": "No"
 		}
-		}
+	}
 }

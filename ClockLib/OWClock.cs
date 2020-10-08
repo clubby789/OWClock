@@ -141,15 +141,16 @@ namespace Clock
             Milliseconds = config.GetSettingsValue<bool>("Count In Milliseconds");
             EventCount = config.GetSettingsValue<int>("Events to Display");
             HudScale = config.GetSettingsValue<float>("HudScale");
+            EnabledTypes.Clear();
             for (int i = 0; i < Enum.GetNames(typeof(TimeEvent.Type)).Length; i++)
             {
                 var name = Enum.GetName(typeof(TimeEvent.Type), i);
-                EnabledTypes.Clear();
                 if (config.GetSettingsValue<bool>(name))
                 {
                     EnabledTypes.Add(i);
                 }
             }
+            
         }
     }
 }

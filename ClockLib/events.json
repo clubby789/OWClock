@@ -2,95 +2,118 @@
 	"eventList": [
 		{
 			"Timestamp": 0.0,
-			"Name": "Loop Begins"
+			"Name": "Loop Begins",
+			"type": 1
 		},
 		{
 			"Timestamp": 120.0,
-			"Name": "Hourglass Sand Begins to Flow"
+			"Name": "Hourglass Sand Begins to Flow",
+			"type": 4
 		},
 		{
 			"Timestamp": 430.0,
-			"Name": "Sun Station Warp"
+			"Name": "Sun Station Warp",
+			"type": 2
 		},
 		{
 			"Timestamp": 470.0,
-			"Name": "Ash Twin Warp"
+			"Name": "Ash Twin Warp",
+			"type": 2
 		},
 		{
 			"Timestamp": 480.0,
-			"Name": "Sun Station Warp"
+			"Name": "Sun Station Warp",
+			"type": 2
 		},
 		{
 			"Timestamp": 530.0,
-			"Name": "Sun Station Warp"
+			"Name": "Sun Station Warp",
+			"type": 2
 		},
 		{
 			"Timestamp": 580.0,
-			"Name": "Sun Station Warp"
+			"Name": "Sun Station Warp",
+			"type": 2
 		},
 		{
 			"Timestamp": 620.0,
-			"Name": "Ash Twin Warp"
+			"Name": "Ash Twin Warp",
+			"type": 2
 		},
 		{
 			"Timestamp": 630.0,
-			"Name": "Sun Station Warp"
+			"Name": "Sun Station Warp",
+			"type": 2
 		},
 		{
 			"Timestamp": 660.0,
-			"Name": "Chert Becomes Nervous"
+			"Name": "Chert Becomes Nervous",
+			"type": 3
 		},
 		{
 			"Timestamp": 680.0,
-			"Name": "Sun Station Warp"
+			"Name": "Sun Station Warp",
+			"type": 2
 		},
 		{
 			"Timestamp": 690.0,
-			"Name": "Sun Station Falls (47s ago)"
+			"Name": "Sun Station Falls",
+			"type": 0
 		},
 		{
 			"Timestamp": 765.0,
-			"Name": "Ash Twin Warp"
+			"Name": "Ash Twin Warp",
+			"type": 2
 		},
 		{
 			"Timestamp": 910.0,
-			"Name": "Ash Twin Warp"
+			"Name": "Ash Twin Warp",
+			"type": 2
 		},
 		{
 			"Timestamp": 1020.0,
-			"Name": "Chert Panics"
+			"Name": "Chert Panics",
+			"type": 3
 		},
 		{
 			"Timestamp": 1050.0,
-			"Name": "Ash Twin Warp"
+			"Name": "Ash Twin Warp",
+			"type": 2
 		},
 		{
 			"Timestamp": 1200.0,
-			"Name": "Ash Twin Warp"
+			"Name": "Ash Twin Warp",
+			"type": 2
 		},
 		{
 			"Timestamp": 1220.0,
-			"Name": "Sand Stops Flowing"
+			"Name": "Sand Stops Flowing",
+			"type": 4
 		},
 		{
 			"Timestamp": 1230.0,
-			"Name": "Chert Becomes Catatonic"
+			"Name": "Chert Becomes Catatonic",
+			"type": 3
 		},
 		{
 			"Timestamp": 1235.0,
-			"Name": "Beginning of the End"
+			"Name": "Beginning of the End",
+			"type": 1
 		},
 		{
 			"Timestamp": 1290.0,
-			"Name": "Warp Platforms Inactive"
+			"Name": "Warp Platforms Inactive",
+			"type": 2
 		},
 		{
 			"Timestamp": 1320.0,
-			"Name": "Supernova"
+			"Name": "Supernova",
+			"type": 0
 		},
 		{
 			"Timestamp": 1360.0,
-			"Name": "Loop Ends"
+			"Name": "Loop Ends",
+			"type": 1
 		}
 	]
 }
