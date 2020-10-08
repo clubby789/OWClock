@@ -22,6 +22,7 @@ namespace Clock
         public static bool Milliseconds { get; private set; }
         public static int EventCount { get; private set; }
         public static float HudScale { get; private set; }
+        public static List<int> EnabledTypes { get; private set; } = new List<int>();
         public static EventFile Save { get => _save; set => _save = value; }
 
         private void Start()
@@ -80,7 +81,6 @@ namespace Clock
             style.wordWrap = true;
 
             var timestamp = CountUp ? "Time Elapsed: " + ParseTime(elapsed) : "Time Remaining: " + ParseTime(TimeLoop.GetSecondsRemaining());
-            // GUI.Label(new Rect(_xPos, _yPos, 200f, 60f), timestamp, style);
             GUI.Label(new Rect(_xPos, _yPos, _width, 60f), timestamp, style);
 
             style.fontSize = 20;
@@ -92,6 +92,10 @@ namespace Clock
             {
                 var timeEvent = Save.eventList[i];
                 if (timeEvent.Timestamp < elapsed)
+                {
+                    continue;
+                }
+                if (EnabledTypes.IndexOf((int)timeEvent.type) == -1)
                 {
                     continue;
                 }
@@ -137,6 +141,15 @@ namespace Clock
             Milliseconds = config.GetSettingsValue<bool>("Count In Milliseconds");
             EventCount = config.GetSettingsValue<int>("Events to Display");
             HudScale = config.GetSettingsValue<float>("HudScale");
+            for (int i = 0; i < Enum.GetNames(typeof(TimeEvent.Type)).Length; i++)
+            {
+                var name = Enum.GetName(typeof(TimeEvent.Type), i);
+                EnabledTypes.Clear();
+                if (config.GetSettingsValue<bool>(name))
+                {
+                    EnabledTypes.Add(i);
+                }
+            }
         }
     }
 }
