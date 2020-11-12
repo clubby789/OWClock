@@ -9,3 +9,6 @@ New events can be added from the pause menu (timestamp will be set to the curren
  - Milliseconds: For speedrunners; uses millisecond timestamps
  - Events to Display: Number of upcoming events to display
  - Event List Width: Fraction of the available resolution that the event list can take up
+
+## KNOWN ISSUES
+Running this during more intensive moments seem to sometimes cause a BSOD with CRITICAL_PROCESS_DIED (At least on my PC). If anyone has this issue (or a solution), please let me know.
