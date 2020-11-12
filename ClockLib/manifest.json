@@ -4,6 +4,6 @@
   "name": "Clock",
   "uniqueName": "clubby789.OWClock",
   "description": "Adds a clock overlay and eventlist",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "owmlVersion": "0.7.3"
 }
