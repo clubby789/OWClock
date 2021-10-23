@@ -13,6 +13,7 @@ namespace Clock
             Chert,
             Misc
         }
+
         public float Timestamp;
         public string Name;
         public Type type = Type.Misc;

@@ -10,14 +10,14 @@ namespace Clock
     public class OWClock : ModBehaviour
     {
         private static EventFile _save;
-        private List<string> _eventListStr = new List<string>();
-        private List<KeyValuePair<float, string>> _eventList = new List<KeyValuePair<float, string>>();
+        private readonly List<string> _eventListStr = new List<string>();
+        private readonly List<KeyValuePair<float, string>> _eventList = new List<KeyValuePair<float, string>>();
         private Font _hudFont;
         private float _xPos;
         private float _yPos;
         private float _width;
 
-        public static IModHelper Helper;
+        internal static IModHelper Helper;
         public static bool CountUp { get; private set; }
         public static bool Milliseconds { get; private set; }
         public static int EventCount { get; private set; }
@@ -74,11 +74,14 @@ namespace Clock
                 return;
             }
 
-            var style = new GUIStyle();
-            style.font = _hudFont;
-            style.fontSize = 30;
+            var style = new GUIStyle
+            {
+                font = _hudFont,
+                fontSize = 30,
+                wordWrap = true
+            };
+
             style.normal.textColor = Color.white;
-            style.wordWrap = true;
 
             var timestamp = CountUp ? "Time Elapsed: " + ParseTime(elapsed) : "Time Remaining: " + ParseTime(TimeLoop.GetSecondsRemaining());
             GUI.Label(new Rect(_xPos, _yPos, _width, 60f), timestamp, style);
@@ -95,10 +98,12 @@ namespace Clock
                 {
                     continue;
                 }
+
                 if (EnabledTypes.IndexOf((int)timeEvent.type) == -1)
                 {
                     continue;
                 }
+
                 var scaleFactor = (timeEvent.Timestamp - elapsed) / 20;
                 style.normal.textColor = Color.Lerp(Color.red, Color.white, scaleFactor);
                 var timeString = CountUp ? ParseTime(timeEvent.Timestamp) : ParseTime(timeEvent.Timestamp - elapsed);
@@ -107,7 +112,6 @@ namespace Clock
                 yOff += labelSize;
                 GUI.Label(new Rect(_xPos, _yPos - yOff, _width, labelSize), $"{timeString} - {timeEvent.Name}", style);
                 shown++;
-
             }
         }
 
@@ -122,7 +126,7 @@ namespace Clock
             Save.AddEvent(TimeLoop.GetSecondsElapsed(), text);
         }
 
-        string ParseTime(float timestamp)
+        static string ParseTime(float timestamp)
         {
             var minutes = Mathf.Floor(timestamp / 60f).ToString().PadLeft(2, '0');
             var seconds = Math.Truncate(timestamp % 60f).ToString().PadLeft(2, '0');
@@ -149,8 +153,7 @@ namespace Clock
                 {
                     EnabledTypes.Add(i);
                 }
-            }
-            
+            }          
         }
     }
 }
