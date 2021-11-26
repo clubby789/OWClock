@@ -1,4 +1,7 @@
 # OWClock
+
+![image](https://user-images.githubusercontent.com/3955124/143557890-e64ad41d-9e19-4c10-9471-c2beaa1ed49b.png)
+
 This mod adds a clock overlay to Outer Wilds. It can be set to count up, or down to the sun exploding.
 
 There's also an additional event logging system; upcoming events defined in `events.json` are displayed above the clock, turning red as they approach.
