@@ -11,6 +11,11 @@
 			"type": 4
 		},
 		{
+			"Timestamp": 420.0,
+			"Name": "The Stranger solar sails deploy",
+			"type": 5
+		},
+		{
 			"Timestamp": 430.0,
 			"Name": "Sun Station Warp",
 			"type": 2
@@ -59,6 +64,31 @@
 			"Timestamp": 690.0,
 			"Name": "Sun Station Falls",
 			"type": 0
+		},
+		{
+			"Timestamp": 480.0,
+			"Name": "Dam bursts",
+			"type": 5
+		},
+		{
+			"Timestamp": 490.0,
+			"Name": "River Lowlands is flooded",
+			"type": 5
+		},
+		{
+			"Timestamp": 510.0,
+			"Name": "Cinder Isles is flooded",
+			"type": 5
+		},
+		{
+			"Timestamp": 520.0,
+			"Name": "Hidden Gorge walkways are destroyed",
+			"type": 5
+		},
+		{
+			"Timestamp": 520.0,
+			"Name": "Cinder Isles tower completely falls",
+			"type": 5
 		},
 		{
 			"Timestamp": 765.0,
