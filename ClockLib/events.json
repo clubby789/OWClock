@@ -66,34 +66,29 @@
 			"type": 0
 		},
 		{
-			"Timestamp": 480.0,
+			"Timestamp": 765.0,
+			"Name": "Ash Twin Warp",
+			"type": 2
+		},
+		{
+			"Timestamp": 780.0,
 			"Name": "Dam bursts",
 			"type": 5
 		},
 		{
-			"Timestamp": 490.0,
+			"Timestamp": 790.0,
 			"Name": "River Lowlands is flooded",
 			"type": 5
 		},
 		{
-			"Timestamp": 510.0,
+			"Timestamp": 810.0,
 			"Name": "Cinder Isles is flooded",
 			"type": 5
 		},
 		{
-			"Timestamp": 520.0,
+			"Timestamp": 820.0,
 			"Name": "Hidden Gorge walkways are destroyed",
 			"type": 5
-		},
-		{
-			"Timestamp": 520.0,
-			"Name": "Cinder Isles tower completely falls",
-			"type": 5
-		},
-		{
-			"Timestamp": 765.0,
-			"Name": "Ash Twin Warp",
-			"type": 2
 		},
 		{
 			"Timestamp": 910.0,
@@ -119,6 +114,11 @@
 			"Timestamp": 1220.0,
 			"Name": "Sand Stops Flowing",
 			"type": 4
+		},
+		{
+			"Timestamp": 1230.0,
+			"Name": "Cinder Isles tower completely falls",
+			"type": 5
 		},
 		{
 			"Timestamp": 1230.0,
