@@ -11,7 +11,8 @@ namespace Clock
             TimeLoop,
             WarpPlatforms,
             Chert,
-            Misc
+            Misc,
+            EotE
         }
 
         public float Timestamp;

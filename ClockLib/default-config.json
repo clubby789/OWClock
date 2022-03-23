@@ -45,6 +45,13 @@
 			"value": true,
 			"yes": "Yes",
 			"no": "No"
+		},
+		"EotE": {
+			"title": "Show Echoes of the Eye Events",
+			"type": "toggle",
+			"value": true,
+			"yes": "Yes",
+			"no": "No"
 		}
 	}
 }
