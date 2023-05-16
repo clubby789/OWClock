@@ -11,6 +11,11 @@
 			"type": 4
 		},
 		{
+			"Timestamp": 201.0,
+			"Name": "Satellite reaches 40 degrees",
+			"type": 5
+		},
+		{
 			"Timestamp": 400.0,
 			"Name": "The Stranger solar sails deploy",
 			"type": 5
