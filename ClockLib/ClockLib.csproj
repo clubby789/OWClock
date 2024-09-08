@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -37,52 +36,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Lib.Harmony.2.1.1\lib\net48\0Harmony.dll</HintPath>
-    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>$(GameDir)\OuterWilds_Data\Managed\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio-Unity, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OWML.2.3.2\lib\net48\NAudio-Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Json.Net.Unity3D.9.0.1\lib\net35\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="OWML.Common, Version=2.3.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OWML.2.3.2\lib\net48\OWML.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="OWML.Logging, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OWML.2.3.2\lib\net48\OWML.Logging.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="OWML.ModHelper, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OWML.2.3.2\lib\net48\OWML.ModHelper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="OWML.ModHelper.Assets, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OWML.2.3.2\lib\net48\OWML.ModHelper.Assets.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="OWML.ModHelper.Events, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OWML.2.3.2\lib\net48\OWML.ModHelper.Events.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="OWML.ModHelper.Input, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OWML.2.3.2\lib\net48\OWML.ModHelper.Input.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="OWML.ModHelper.Interaction, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OWML.2.3.2\lib\net48\OWML.ModHelper.Interaction.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="OWML.ModHelper.Menus, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OWML.2.3.2\lib\net48\OWML.ModHelper.Menus.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="OWML.Utils, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OWML.2.3.2\lib\net48\OWML.Utils.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -112,11 +67,19 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="manifest.json" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll" />
-    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\analyzers\dotnet\cs\Microsoft.CodeAnalysis.NetAnalyzers.dll" />
+    <PackageReference Include="Lib.Harmony">
+      <Version>2.3.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
+      <Version>8.0.0</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="OWML">
+      <Version>2.13.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -138,12 +101,4 @@
       rmdir /s /q "$(ProjectDir)\Release"
 </PostBuildEvent>
   </PropertyGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.targets'))" />
-  </Target>
-  <Import Project="..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.targets" Condition="Exists('..\packages\Microsoft.CodeAnalysis.NetAnalyzers.5.0.3\build\Microsoft.CodeAnalysis.NetAnalyzers.targets')" />
 </Project>
