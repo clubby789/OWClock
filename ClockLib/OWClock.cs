@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 namespace Clock
 {
@@ -20,6 +20,7 @@ namespace Clock
         private int _displayHeight;
         private int _displayWidth;
         private bool _displayOnlyWhenSuitOn;
+        private bool _displayed = true;
 
         internal static IModHelper Helper;
         public static bool CountUp { get; private set; }
@@ -57,6 +58,11 @@ namespace Clock
         /// </summary>
         internal void OnGUI()
         {
+            if (!_displayed)
+            {
+                return;
+            }
+
             if (_eventList == null)
             {
                 return;
@@ -120,6 +126,17 @@ namespace Clock
                 yOff += labelSize;
                 GUI.Label(new Rect(_xPos, _yPos - yOff, _width, labelSize), guiText, style);
                 shown++;
+            }
+        }
+
+        /// <summary>
+        /// Update is called once per frame by Unity
+        /// </summary>
+        internal void Update()
+        {
+            if (Keyboard.current[Key.H].wasPressedThisFrame)
+            {
+                _displayed = !_displayed;
             }
         }
 
