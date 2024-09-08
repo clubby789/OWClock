@@ -28,34 +28,37 @@ namespace Clock
         public static EventFile Save { get => _save; set => _save = value; }
 
         #region "Magic methods from Unity MonoBehaviour"
-#pragma warning disable IDE0051 // Remove unused private members
         /// <summary>
         /// Called once when the mod is loaded
         /// </summary>
-        private void Start()
-#pragma warning restore IDE0051 // Remove unused private members
+        internal void Start()
         {
             Helper = ModHelper;
             Save = EventFile.LoadSaveFile();
             _hudFont = Resources.Load<Font>(@"fonts/english - latin/SpaceMono-Regular_Dynamic");
+#pragma warning disable 0618 // New menu system doesn't support text input in pause menu
             ModHelper.Menus.PauseMenu.OnInit += AddMenuItem;
+#pragma warning restore 0618
 
-            ModHelper.Console.WriteLine($"OWClock mod loaded at " + DateTime.Now.ToString("s"), MessageType.Success);
+            ModHelper.Console.WriteLine($"OWClock mod loaded at " + DateTime.Now.ToString("s"), type: MessageType.Success);
 
             GlobalMessenger<GraphicSettings>.AddListener("GraphicSettingsUpdated", GetDisplaySettings);
 
             // We need the wake event to reload our eventlist because we are going to remove expired items from the list as they pass.
-            ModHelper.Events.Subscribe<PlayerBody>(Events.AfterAwake);
-            ModHelper.Events.Event += OnEvent;
+            //ModHelper.Events.Subscribe<PlayerBody>(Events.AfterAwake);
+            //ModHelper.Events.Event += OnEvent;
+            GlobalMessenger.AddListener("WakeUp", OnWakeup);
         }
 
-#pragma warning disable IDE0051 // Remove unused private members
         /// <summary>
         /// OnGUI is called for rendering and handling GUI events by Unity. 
         /// </summary>
-        private void OnGUI()
-#pragma warning restore IDE0051 // Remove unused private members
+        internal void OnGUI()
         {
+            if (_eventList == null)
+            {
+                return;
+            }
             if (GUIMode.IsHiddenMode() || PlayerState.UsingShipComputer())
             {
                 return;
@@ -139,25 +142,19 @@ namespace Clock
 
         #region "Event Handlers"
         /// <summary>
-        /// Handles all ModHelper.Events you Subscribe to.
+        /// Handles wakeup by reloading the event list
         /// </summary>
-        /// <param name="behaviour">From UnityEngine.CoreModule</param>
-        /// <param name="ev">The event that is happening.</param>
-        private void OnEvent(MonoBehaviour behaviour, Events ev)
+        private void OnWakeup()
         {
-            ModHelper.Console.WriteLine("Behaviour name: " + behaviour.name);
-
             // Start the list over from the save file when you wake up. This allows us to remove events as they happen.
-            if (behaviour.GetType() == typeof(PlayerBody) && ev == Events.AfterAwake)
-            {
-                ModHelper.Console.WriteLine("Loading the event list for the clock.");
-                _eventList = Save.eventList.ToList();
-            }
+            ModHelper.Console.WriteLine("Loading the event list for the clock.", type: MessageType.Debug);
+            _eventList = Save.eventList.ToList();
         }
 
         /// <summary>
         /// Adds custom menu items to the game.
         /// </summary>
+#pragma warning disable 0618 // New menu system doesn't support text input in pause menu
         private void AddMenuItem()
         {
             var addEventMenu = ModHelper.Menus.PauseMenu.Copy("ADD EVENT");
@@ -168,6 +165,7 @@ namespace Clock
             var debugEventInputButton = ModHelper.Menus.PauseMenu.ResumeButton.Duplicate("DEBUG TIME");
             debugEventInputButton.OnClick += LogTime;
         }
+#pragma warning restore 0618
 
         /// <summary>
         /// Print the current time to the OWML log window.
@@ -175,7 +173,7 @@ namespace Clock
         private void LogTime()
         {
             var currentTime = TimeLoop.GetSecondsElapsed();
-            ModHelper.Console.WriteLine($"Time is {currentTime}");
+            ModHelper.Console.WriteLine($"Time is {currentTime}", type: MessageType.Info);
         }
 
         /// <summary>
@@ -193,11 +191,13 @@ namespace Clock
         /// <summary>
         /// Get user input for the menu item "ADD EVENT".
         /// </summary>
+#pragma warning disable 0618 // New menu system doesn't support text input in pause menu
         private void EventPopup()
         {
             var popup = ModHelper.Menus.PopupManager.CreateInputPopup(InputType.Text, "Event Name");
             popup.OnConfirm += AddEvent;
         }
+#pragma warning restore 0618
 
         /// <summary>
         /// Save the new event that the user created from the menu.
