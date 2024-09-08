@@ -19,6 +19,7 @@ namespace Clock
         private float _width;
         private int _displayHeight;
         private int _displayWidth;
+        private bool _displayOnlyWhenSuitOn;
 
         internal static IModHelper Helper;
         public static bool CountUp { get; private set; }
@@ -62,6 +63,12 @@ namespace Clock
             }
 
             if (GUIMode.IsHiddenMode() || PlayerState.UsingShipComputer() || LoadManager.GetCurrentScene() != OWScene.SolarSystem)
+            {
+                return;
+            }
+
+            // It would be cool to render the UI on the helmet display if this is enabled
+            if (_displayOnlyWhenSuitOn && !PlayerState.IsWearingSuit())
             {
                 return;
             }
@@ -138,6 +145,7 @@ namespace Clock
 
             // When the HudScale changes, we need to scale the HUD
             RecalculatePosition();
+            _displayOnlyWhenSuitOn = config.GetSettingsValue<bool>("Only Display When Suit Equipped");
         }
 
         #endregion

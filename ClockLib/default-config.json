@@ -1,9 +1,11 @@
 {
+	"$schema": "https://raw.githubusercontent.com/ow-mods/owml/master/schemas/config_schema.json",
 	"enabled": true,
 	"settings": {
 		"Count Up": true,
 		"Count In Milliseconds": false,
 		"Events to Display": 5,
+		"Only Display When Suit Equipped": false,
 		"HudScale": {
 			"title": "Event List Width",
 			"type": "slider",
