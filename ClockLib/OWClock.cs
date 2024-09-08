@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Clock
 {
@@ -59,7 +60,8 @@ namespace Clock
             {
                 return;
             }
-            if (GUIMode.IsHiddenMode() || PlayerState.UsingShipComputer())
+
+            if (GUIMode.IsHiddenMode() || PlayerState.UsingShipComputer() || LoadManager.GetCurrentScene() != OWScene.SolarSystem)
             {
                 return;
             }
