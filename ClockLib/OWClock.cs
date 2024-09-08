@@ -88,7 +88,7 @@ namespace Clock
 
             style.normal.textColor = Color.white;
 
-            var timestamp = CountUp ? "Time Elapsed: " + ParseTime(elapsed) : "Time Remaining: " + ParseTime(TimeLoop.GetSecondsRemaining());
+            var timestamp = CountUp ? "Time Elapsed: " + ParseTime(elapsed) : "Time Remaining: " + ParseTime(Math.Max(0, TimeLoop.GetSecondsRemaining()));
             GUI.Label(new Rect(_xPos, _yPos, _width, 60f), timestamp, style);
 
             style.fontSize = 20;
