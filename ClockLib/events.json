@@ -1,154 +1,439 @@
 {
-	"eventList": [
-		{
-			"Timestamp": 0.0,
-			"Name": "Loop Begins",
-			"type": 1
-		},
-		{
-			"Timestamp": 120.0,
-			"Name": "Hourglass Sand Begins to Flow",
-			"type": 4
-		},
-		{
-			"Timestamp": 201.0,
-			"Name": "Satellite reaches 40 degrees",
-			"type": 5
-		},
-		{
-			"Timestamp": 400.0,
-			"Name": "The Stranger solar sails deploy",
-			"type": 5
-		},
-		{
-			"Timestamp": 430.0,
-			"Name": "Sun Station Warp",
-			"type": 2
-		},
-		{
-			"Timestamp": 470.0,
-			"Name": "Ash Twin Warp",
-			"type": 2
-		},
-		{
-			"Timestamp": 480.0,
-			"Name": "Sun Station Warp",
-			"type": 2
-		},
-		{
-			"Timestamp": 530.0,
-			"Name": "Sun Station Warp",
-			"type": 2
-		},
-		{
-			"Timestamp": 580.0,
-			"Name": "Sun Station Warp",
-			"type": 2
-		},
-		{
-			"Timestamp": 620.0,
-			"Name": "Ash Twin Warp",
-			"type": 2
-		},
-		{
-			"Timestamp": 630.0,
-			"Name": "Sun Station Warp",
-			"type": 2
-		},
-		{
-			"Timestamp": 660.0,
-			"Name": "Chert Becomes Nervous",
-			"type": 3
-		},
-		{
-			"Timestamp": 680.0,
-			"Name": "Sun Station Warp",
-			"type": 2
-		},
-		{
-			"Timestamp": 690.0,
-			"Name": "Sun Station Falls",
-			"type": 0
-		},
-		{
-			"Timestamp": 765.0,
-			"Name": "Ash Twin Warp",
-			"type": 2
-		},
-		{
-			"Timestamp": 780.0,
-			"Name": "Dam bursts",
-			"type": 5
-		},
-		{
-			"Timestamp": 790.0,
-			"Name": "River Lowlands is flooded",
-			"type": 5
-		},
-		{
-			"Timestamp": 810.0,
-			"Name": "Cinder Isles is flooded",
-			"type": 5
-		},
-		{
-			"Timestamp": 820.0,
-			"Name": "Hidden Gorge walkways are destroyed",
-			"type": 5
-		},
-		{
-			"Timestamp": 910.0,
-			"Name": "Ash Twin Warp",
-			"type": 2
-		},
-		{
-			"Timestamp": 1020.0,
-			"Name": "Chert Panics",
-			"type": 3
-		},
-		{
-			"Timestamp": 1050.0,
-			"Name": "Ash Twin Warp",
-			"type": 2
-		},
-		{
-			"Timestamp": 1200.0,
-			"Name": "Ash Twin Warp",
-			"type": 2
-		},
-		{
-			"Timestamp": 1220.0,
-			"Name": "Sand Stops Flowing",
-			"type": 4
-		},
-		{
-			"Timestamp": 1230.0,
-			"Name": "Cinder Isles tower completely falls",
-			"type": 5
-		},
-		{
-			"Timestamp": 1230.0,
-			"Name": "Chert Becomes Catatonic",
-			"type": 3
-		},
-		{
-			"Timestamp": 1235.0,
-			"Name": "Beginning of the End",
-			"type": 1
-		},
-		{
-			"Timestamp": 1290.0,
-			"Name": "Warp Platforms Inactive",
-			"type": 2
-		},
-		{
-			"Timestamp": 1320.0,
-			"Name": "Supernova",
-			"type": 0
-		},
-		{
-			"Timestamp": 1360.0,
-			"Name": "Loop Ends",
-			"type": 1
-		}
-	]
+  "eventList": [
+    {
+      "Timestamp": 0.0,
+      "Name": "Loop Begins",
+      "type": 1
+    },
+    {
+      "Timestamp": 120.0,
+      "Name": "Sand Begins Flowing",
+      "type": 4
+    },
+    {
+      "Timestamp": 200.0,
+      "Name": "Satellite Reaches 40°",
+      "type": 5
+    },
+    {
+      "Timestamp": 220.0,
+      "Name": "Interloper Opens",
+      "type": 4
+    },
+    {
+      "Timestamp": 260.0,
+      "Name": "Interloper Closes",
+      "type": 4
+    },
+    {
+      "Timestamp": 320.0,
+      "Name": "Tower Opens: Sun Station",
+      "type": 4
+    },
+    {
+      "Timestamp": 350.0,
+      "Name": "HEL is Accessible",
+      "type": 4
+    },
+    {
+      "Timestamp": 370.0,
+      "Name": "HEL Becomes Inccessible",
+      "type": 4
+    },
+    {
+      "Timestamp": 380.0,
+      "Name": "Warp: Sun Station",
+      "type": 2
+    },
+    {
+      "Timestamp": 400.0,
+      "Name": "Stranger's Sails Deploy",
+      "type": 5
+    },
+    {
+      "Timestamp": 429.0,
+      "Name": "Warp: Sun Station",
+      "type": 2
+    },
+    {
+      "Timestamp": 445.0,
+      "Name": "Tower Opens: Hourglass Twins",
+      "type": 4
+    },
+    {
+      "Timestamp": 470.0,
+      "Name": "Warp: Ash Twin",
+      "type": 2
+    },
+    {
+      "Timestamp": 472.0,
+      "Name": "Warp: Ember Twin",
+      "type": 2
+    },
+    {
+      "Timestamp": 480.0,
+      "Name": "Warp: Sun Station",
+      "type": 2
+    },
+    {
+      "Timestamp": 528.0,
+      "Name": "Warp: Sun Station",
+      "type": 2
+    },
+    {
+      "Timestamp": 579.0,
+      "Name": "Warp: Sun Station",
+      "type": 2
+    },
+    {
+      "Timestamp": 615.0,
+      "Name": "Warp: Ash Twin",
+      "type": 2
+    },
+    {
+      "Timestamp": 620.0,
+      "Name": "Tower Opens: Timber Hearth",
+      "type": 4
+    },
+    {
+      "Timestamp": 620.0,
+      "Name": "Warp: Ember Twin",
+      "type": 2
+    },
+    {
+      "Timestamp": 628.0,
+      "Name": "Warp: Sun Station",
+      "type": 2
+    },
+    {
+      "Timestamp": 615.0,
+      "Name": "Tower Opens: Brittle Hollow",
+      "type": 4
+    },
+    {
+      "Timestamp": 660.0,
+      "Name": "Chert Becomes Nervous",
+      "type": 3
+    },
+    {
+      "Timestamp": 665.0,
+      "Name": "Stepping Stone District is Buried",
+      "type": 4
+    },
+    {
+      "Timestamp": 638.0,
+      "Name": "Tower Opens: Giant's Deep (Top)",
+      "type": 4
+    },
+    {
+      "Timestamp": 678.0,
+      "Name": "Warp: Sun Station [LAST]",
+      "type": 2
+    },
+    {
+      "Timestamp": 682.0,
+      "Name": "Warp: Timber Hearth",
+      "type": 2
+    },
+    {
+      "Timestamp": 690.0,
+      "Name": "Sun Station Destroyed",
+      "type": 0
+    },
+    {
+      "Timestamp": 695.0,
+      "Name": "Interloper Opens",
+      "type": 4
+    },
+    {
+      "Timestamp": 701.0,
+      "Name": "Warp: Giant's Deep",
+      "type": 2
+    },
+    {
+      "Timestamp": 735.0,
+      "Name": "Interloper Closes",
+      "type": 4
+    },
+    {
+      "Timestamp": 732.0,
+      "Name": "Warp: Brittle Hollow",
+      "type": 2
+    },
+    {
+      "Timestamp": 736.0,
+      "Name": "Tower Opens: Giant's Deep (Middle)",
+      "type": 4
+    },
+    {
+      "Timestamp": 752.0,
+      "Name": "Warp: Timber Hearth",
+      "type": 2
+    },
+    {
+      "Timestamp": 762.0,
+      "Name": "Warp: Ash Twin",
+      "type": 2
+    },
+    {
+      "Timestamp": 766.0,
+      "Name": "Warp: Ember Twin",
+      "type": 2
+    },
+    {
+      "Timestamp": 780.0,
+      "Name": "Dam Bursts",
+      "type": 5
+    },
+    {
+      "Timestamp": 785.0,
+      "Name": "Warp: Giant's Deep",
+      "type": 2
+    },
+    {
+      "Timestamp": 790.0,
+      "Name": "River Lowlands is Flooded",
+      "type": 5
+    },
+    {
+      "Timestamp": 799.0,
+      "Name": "Warp: Brittle Hollow",
+      "type": 2
+    },
+    {
+      "Timestamp": 810.0,
+      "Name": "Cinder Isles is Flooded",
+      "type": 5
+    },
+    {
+      "Timestamp": 812.0,
+      "Name": "Warp: Timber Hearth",
+      "type": 2
+    },
+    {
+      "Timestamp": 820.0,
+      "Name": "Hidden Gorge Walkways Are Destroyed",
+      "type": 5
+    },
+    {
+      "Timestamp": 860.0,
+      "Name": "E.Twin G.Canon Controls Are Buried",
+      "type": 4
+    },
+    {
+      "Timestamp": 864.0,
+      "Name": "Warp: Giant's Deep",
+      "type": 2
+    },
+    {
+      "Timestamp": 865.0,
+      "Name": "Anglerfish Overlook is Inaccessible",
+      "type": 4
+    },
+    {
+      "Timestamp": 877.0,
+      "Name": "Warp: Brittle Hollow",
+      "type": 2
+    },
+    {
+      "Timestamp": 878.0,
+      "Name": "Warp: Timber Hearth",
+      "type": 2
+    },
+    {
+      "Timestamp": 900.0,
+      "Name": "Temple of the Eye is Buried",
+      "type": 4
+    },
+    {
+      "Timestamp": 908.0,
+      "Name": "Warp: Ash Twin",
+      "type": 2
+    },
+    {
+      "Timestamp": 913.0,
+      "Name": "Warp: Ember Twin",
+      "type": 2
+    },
+    {
+      "Timestamp": 940.0,
+      "Name": "Warp: Giant's Deep",
+      "type": 2
+    },
+    {
+      "Timestamp": 946.0,
+      "Name": "Warp: Brittle Hollow",
+      "type": 2
+    },
+    {
+      "Timestamp": 952.0,
+      "Name": "Warp: Timber Hearth",
+      "type": 2
+    },
+    {
+      "Timestamp": 980.0,
+      "Name": "Escape Pod #2 is Buried",
+      "type": 4
+    },
+    {
+      "Timestamp": 1005.0,
+      "Name": "Sunless City is Fully Buried",
+      "type": 4
+    },
+    {
+      "Timestamp": 1006.0,
+      "Name": "Tower Opens: Giant's Deep (Base)",
+      "type": 4
+    },
+    {
+      "Timestamp": 1010.0,
+      "Name": "Warp: Timber Hearth",
+      "type": 2
+    },
+    {
+      "Timestamp": 1020.0,
+      "Name": "Warp: Brittle Hollow",
+      "type": 2
+    },
+    {
+      "Timestamp": 1020.0,
+      "Name": "Chert Panics",
+      "type": 3
+    },
+    {
+      "Timestamp": 1025.0,
+      "Name": "Warp: Giant's Deep",
+      "type": 2
+    },
+    {
+      "Timestamp": 1056.0,
+      "Name": "Warp: Ash Twin",
+      "type": 2
+    },
+    {
+      "Timestamp": 1059.0,
+      "Name": "Warp: Ember Twin",
+      "type": 2
+    },
+    {
+      "Timestamp": 1075.0,
+      "Name": "Warp: Timber Hearth",
+      "type": 2
+    },
+    {
+      "Timestamp": 1085.0,
+      "Name": "Quantum Tower Exits White Hole",
+      "type": 4
+    },
+    {
+      "Timestamp": 1094.0,
+      "Name": "Warp: Brittle Hollow",
+      "type": 2
+    },
+    {
+      "Timestamp": 1096.0,
+      "Name": "Warp: Giant's Deep",
+      "type": 2
+    },
+    {
+      "Timestamp": 1150.0,
+      "Name": "Warp: Timber Hearth",
+      "type": 2
+    },
+    {
+      "Timestamp": 1175.0,
+      "Name": "Interloper Opens",
+      "type": 4
+    },
+    {
+      "Timestamp": 1163.0,
+      "Name": "Warp: Brittle Hollow",
+      "type": 2
+    },
+    {
+      "Timestamp": 1181.0,
+      "Name": "Warp: Giant's Deep",
+      "type": 2
+    },
+    {
+      "Timestamp": 1185.0,
+      "Name": "Interloper Collides with Sun",
+      "type": 4
+    },
+    {
+      "Timestamp": 1198.0,
+      "Name": "Warp: Ash Twin [LAST]",
+      "type": 2
+    },
+    {
+      "Timestamp": 1204.0,
+      "Name": "Warp: Ember Twin [LAST]",
+      "type": 2
+    },
+    {
+      "Timestamp": 1208.0,
+      "Name": "Warp: Timber Hearth",
+      "type": 2
+    },
+    {
+      "Timestamp": 1220.0,
+      "Name": "Hourglass Sand Stops Flowing",
+      "type": 4
+    },
+    {
+      "Timestamp": 1230.0,
+      "Name": "Cinder Isles Tower Completely Falls",
+      "type": 5
+    },
+    {
+      "Timestamp": 1230.0,
+      "Name": "Chert Becomes Catatonic",
+      "type": 3
+    },
+    {
+      "Timestamp": 1235.0,
+      "Name": "Beginning of the End",
+      "type": 1
+    },
+    {
+      "Timestamp": 1241.0,
+      "Name": "Warp: Brittle Hollow",
+      "type": 2
+    },
+    {
+      "Timestamp": 1257.0,
+      "Name": "Warp: Giant's Deep",
+      "type": 2
+    },
+    {
+      "Timestamp": 1274.0,
+      "Name": "Warp: Timber Hearth [LAST]",
+      "type": 2
+    },
+    {
+      "Timestamp": 1308.0,
+      "Name": "Warp: Brittle Hollow [LAST]",
+      "type": 2
+    },
+    {
+      "Timestamp": 1320.0,
+      "Name": "Supernova",
+      "type": 0
+    },
+    {
+      "Timestamp": 1330.0,
+      "Name": "ATP Black Hole Opens",
+      "type": 1
+    },
+    {
+      "Timestamp": 1336.0,
+      "Name": "Warp: Giant's Deep [LAST]",
+      "type": 2
+    },
+    {
+      "Timestamp": 1360.0,
+      "Name": "Loop Ends",
+      "type": 1
+    }
+  ]
 }
